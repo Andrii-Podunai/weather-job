@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage ": "https://andrii-Podunai.github.io/weather-task",
+  "homepage ": "https://andrii-podunai.github.io/weather-job",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
