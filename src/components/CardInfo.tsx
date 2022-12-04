@@ -2,11 +2,14 @@ import { Box, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import RestartAltOutlinedIcon from "@mui/icons-material/RestartAltOutlined";
+import { asyncUpdateCard } from "../asyncFetch/asyncWeather";
 import { useDispatch } from "react-redux";
 
 export default function CardInfo() {
   const [data, setData] = useState<any>({});
   const { id } = useParams();
+
+  const dispatch: any = useDispatch();
 
   useEffect(() => {
     fetch(
@@ -17,11 +20,13 @@ export default function CardInfo() {
   }, [id]);
 
   const updateWeather = () => {
-    fetch(
-      `http://api.openweathermap.org/data/2.5/group?id=${id}&units;=metric&appid=a01be2ab8925ebff559e363c9193587e&units=metric`
-    )
-      .then((response) => response.json())
-      .then((response) => setData(response.list[0]));
+    dispatch(asyncUpdateCard(id));
+
+    // fetch(
+    //   `http://api.openweathermap.org/data/2.5/group?id=${id}&units;=metric&appid=a01be2ab8925ebff559e363c9193587e&units=metric`
+    // )
+    //   .then((response) => response.json())
+    //   .then((response) => setData(response.list[0]));
   };
 
   return (

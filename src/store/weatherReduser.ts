@@ -1,4 +1,4 @@
-import { ADD_ID, ADD_WEATHER, DELETE_CARD, START_WEATHER } from "./actionType"
+import { ADD_ID, ADD_WEATHER, DELETE_CARD, START_WEATHER, UPDATE_DATA } from "./actionType"
 
 
 type ArticleAction = {
@@ -16,25 +16,26 @@ export const weatherReduser = (state = defaultstate, action: ArticleAction) => {
 
     switch (action.type) {
         case ADD_WEATHER:
-            console.log('ADD_WEATHER',action.payload.id, 'another',...state.idWeather);
-
             return {                
                 weatherData: [action.payload, ...state.weatherData],
                 idWeather: [action.payload.id, ...state.idWeather]
             }
         case START_WEATHER:
-            console.log('START_WEATHER',action.payload);
             return {
                 ...state,
                 weatherData: [...action.payload],
             }
         case ADD_ID:      
-        console.log('ADD_ID',...action.payload);
             return {
                 ...state,
                 idWeather: [...action.payload]
             }
-       
+        case UPDATE_DATA:      
+                return {
+               ...state,
+               weatherData: [...action.payload,...state.weatherData.filter((weather:any) => weather.id !== action.payload[0].id)]
+            }
+           
         case DELETE_CARD:  
         console.log('DELETE_CARD');
           

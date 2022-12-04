@@ -1,4 +1,4 @@
-import { addWeather, startWeather } from "../store/actionCreater";
+import { addWeather, startWeather, updateWeather } from "../store/actionCreater";
 
 const KEY: string = 'a01be2ab8925ebff559e363c9193587e'
 
@@ -20,10 +20,18 @@ export const asyncWeather = (city: string) => {
    
 }
 
-export const asyncUpdateCard = (arr: any) => {
+export const asyncStartCard = (arr: any) => {
     return async (dispatch: any) => {
         const res = await fetch(`http://api.openweathermap.org/data/2.5/group?id=${arr}&units;=metric&appid=${KEY}&units=metric`)
         const data = await res.json();
         dispatch(startWeather(data.list));
+    }
+}
+
+export const asyncUpdateCard = (id: string | undefined) => {
+    return async (dispatch: any) => {
+        const res = await fetch(`http://api.openweathermap.org/data/2.5/group?id=${id}&units;=metric&appid=${KEY}&units=metric`)
+        const data = await res.json();
+        dispatch(updateWeather(data.list));
     }
 }

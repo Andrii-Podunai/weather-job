@@ -15,17 +15,13 @@ export default function Cards() {
   useEffect(() => {
     let cat = localStorage.getItem("myCat");
 
-    if (cat !== "" && cat !== null) {
+    if (cat !== "" && cat) {
       let updateCat = localStorage.getItem("myCat");
 
       const array = JSON.parse("[" + updateCat + "]");
       dispatch(addId(array));
     }
-    if (
-      [cat].length < 1 ||
-      localStorage.myCat === undefined ||
-      localStorage.myCat === ""
-    ) {
+    if ([cat].length < 1 || !localStorage.myCat || localStorage.myCat === "") {
       localStorage.setItem("myCat", arr);
 
       dispatch(addId(arr));

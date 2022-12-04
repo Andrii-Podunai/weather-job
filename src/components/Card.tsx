@@ -1,6 +1,4 @@
 import { Box } from "@mui/material";
-import { log } from "console";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 

@@ -7,7 +7,6 @@ import Cards from "./Cards";
 
 export default function InputWeather() {
   const [city, setCity] = useState("");
-  const KEY = "0f9cdc7273b3082a2dccd6713aa3e163";
 
   const dispatch: any = useDispatch();
 
